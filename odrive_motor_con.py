@@ -141,6 +141,9 @@ class OdriveMotorControl(Node):
         # Broadcast transforms
         self.broadcast_transform((0.0, 0.0, 0.0), tf_transformations.quaternion_from_euler(0.0, 0.0, 0.0), current_time, "odom", "map")
         self.broadcast_transform((self.x, self.y, 0.0), q, current_time, "base_link", "odom")
+        # Debug logging
+        self.get_logger().info(f"Publishing Odometry: x={self.x}, y={self.y}, theta={self.theta}, v={v}, w={w}")
+
 
         # Publish path
         temp_pose = PoseStamped()
